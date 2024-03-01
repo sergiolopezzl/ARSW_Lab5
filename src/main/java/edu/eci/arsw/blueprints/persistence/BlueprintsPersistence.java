@@ -3,17 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package edu.eci.arsw.blueprints.controllers;
+package edu.eci.arsw.blueprints.persistence;
 
-
-import org.springframework.web.bind.annotation.*;
 
 /**
  * @author hcadavid
  */
-@RestController
-@RequestMapping(value = "/blueprints")
-public class BlueprintAPIController {
-
+public interface BlueprintsPersistence {
 
 }
