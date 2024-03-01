@@ -1,19 +1,19 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Clase de excepción que indica que no se ha encontrado un blueprint.
  */
 package edu.eci.arsw.blueprints.persistence;
 
-/**
- * @author hcadavid
- */
 public class BlueprintNotFoundException extends Exception {
 
+    // Mensajes de error predefinidos
     public static final String AUTHOR_NOT_FOUND = "The given author doesn't exist.";
     public static final String BLUEPRINT_NOT_FOUND = "No such blueprint.";
+
+    /**
+     * Constructor que crea una instancia de BlueprintNotFoundException con un mensaje específico.
+     * @param message El mensaje de la excepción.
+     */
     public BlueprintNotFoundException(String message) {
         super(message);
     }
-
 }

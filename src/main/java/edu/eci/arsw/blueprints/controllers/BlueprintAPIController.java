@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Clase controladora que define los endpoints REST para interactuar con blueprints.
  */
 package edu.eci.arsw.blueprints.controllers;
 
@@ -16,9 +14,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- * @author hcadavid
- */
 @RestController
 @RequestMapping(value = "/blueprints")
 public class BlueprintAPIController {
@@ -26,11 +21,18 @@ public class BlueprintAPIController {
     @Autowired
     BlueprintsServices blueprintsServices;
 
+    /**
+     * Manejador para la solicitud GET de todos los blueprints.
+     */
     @GetMapping
     public ResponseEntity<?> manejadorGetBlueprints() {
         return new ResponseEntity<>(blueprintsServices.getAllBlueprints(), HttpStatus.ACCEPTED);
     }
 
+    /**
+     * Manejador para la solicitud GET de blueprints por autor.
+     * @param author El autor de los blueprints.
+     */
     @GetMapping(path = "/{author}")
     public ResponseEntity<?> manejadorGetBlueprintsByAuthor(@PathVariable("author") String author) {
         try {
@@ -41,6 +43,11 @@ public class BlueprintAPIController {
         }
     }
 
+    /**
+     * Manejador para la solicitud GET de un blueprint específico.
+     * @param author El autor del blueprint.
+     * @param bpname El nombre del blueprint.
+     */
     @GetMapping(path = "/{author}/{bpname}")
     public ResponseEntity<?> manejadorGetBlueprint(@PathVariable("author") String author, @PathVariable("bpname") String bpname) {
         try {
@@ -51,6 +58,10 @@ public class BlueprintAPIController {
         }
     }
 
+    /**
+     * Manejador para la solicitud POST de un nuevo blueprint.
+     * @param bp El blueprint a agregar.
+     */
     @PostMapping
     public ResponseEntity<?> manejadorPostBlueprint(@RequestBody Blueprint bp) {
         try {
@@ -62,6 +73,12 @@ public class BlueprintAPIController {
         }
     }
 
+    /**
+     * Manejador para la solicitud PUT de actualizar un blueprint.
+     * @param author El autor del blueprint.
+     * @param bpname El nombre del blueprint a actualizar.
+     * @param bp El blueprint actualizado.
+     */
     @PutMapping(path = "/{author}/{bpname}")
     public ResponseEntity<?> manejadorPutBlueprint(@PathVariable("author") String author, @PathVariable("bpname") String bpname, @RequestBody Blueprint bp) {
         try {
